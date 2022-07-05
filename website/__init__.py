@@ -3,7 +3,9 @@ from flask import Flask
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET'] = 'hgk'
+    app.config['SESSION_TYPE'] = 'filesystem'
+    app.secret_key = ''
+    app.config['SECRET'] = ''
 
     from .views import views
     from .auth import auth
