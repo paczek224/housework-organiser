@@ -25,7 +25,7 @@ def login():
                 flash('wrong password', category='error')
         else:
             flash('user does not exist', category='error')
-    return render_template("login.html")
+    return render_template("login.html",user=current_user)
 
 
 @login_required
@@ -64,6 +64,6 @@ def sing_up():
             flash(f'Account created email{new_user.email}, name {new_user.first_name}', category='success')
             login_user(user, remember=True)
 
-            return redirect(url_for("views.home"))
+            return redirect(url_for("views.home"), user=current_user)
 
     return render_template("sign_up.html")
